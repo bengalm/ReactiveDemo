@@ -58,7 +58,25 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.9</version>
         </dependency>
-    </dependencies>
+
+		<!--ip解析-->
+		<dependency>
+			<groupId>org.lionsoul</groupId>
+			<artifactId>ip2region</artifactId>
+			<version>1.7.2</version>
+		</dependency>
+		<!-- 从request获取设备信息 -->
+		<dependency>
+			<groupId>eu.bitwalker</groupId>
+			<artifactId>UserAgentUtils</artifactId>
+			<version>1.21</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-core</artifactId>
+			<version>8.0.36</version>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<plugins>

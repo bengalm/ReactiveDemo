@@ -2,11 +2,10 @@ package com.example.demo;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.rules.Verifier;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.redis.core.ReactiveRedisTemplate;
+import org.springframework.data.redis.core.ReactiveStringRedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -17,16 +16,16 @@ import java.time.Duration;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class RedisTest {
     @Autowired
-    private ReactiveRedisTemplate reactiveRedisTemplate;
+    private ReactiveStringRedisTemplate reactiveStringRedisTemplate;
 
     @Test
     public void testRedis() {
 
         Flux flux = Mono.just("value1")
-                .flatMap(v -> reactiveRedisTemplate.opsForValue().set("user1", v))
-                .thenMany(reactiveRedisTemplate.keys("*")
-                        .flatMap(key -> reactiveRedisTemplate.opsForValue().get(key)));/* .subscribe(v->Assert.assertEquals(v,"value1"))*/
-        flux.subscribe(v -> Assert.assertEquals(v, "value1"));
+                .flatMap(v -> reactiveStringRedisTemplate.opsForValue().set("user1", v))
+                .thenMany(reactiveStringRedisTemplate.keys("*")
+                        .flatMap(key -> reactiveStringRedisTemplate.opsForValue().get(key)));/* .subscribe(v->Assert.assertEquals(v,"value1"))*/
+       // flux.subscribe(v -> Assert.assertEquals(v, "value1"));
         StepVerifier.create(flux)
                 .verifyComplete();
     }
@@ -34,9 +33,9 @@ public class RedisTest {
     public void testRedis1() {
 
         Flux flux = Mono.just("value1")
-                .flatMap(v -> reactiveRedisTemplate.opsForHash().put("user1", "sessionKey", v))
-                .thenMany(reactiveRedisTemplate.keys("*")
-                        .flatMap(key -> reactiveRedisTemplate.opsForHash().get(key, "sessionKey")));/* .subscribe(v->Assert.assertEquals(v,"value1"))*/
+                .flatMap(v -> reactiveStringRedisTemplate.opsForHash().put("user1", "sessionKey", v))
+                .thenMany(reactiveStringRedisTemplate.keys("*")
+                        .flatMap(key -> reactiveStringRedisTemplate.opsForHash().get(key, "sessionKey")));/* .subscribe(v->Assert.assertEquals(v,"value1"))*/
 
         StepVerifier.create(flux)
                 .verifyComplete();
@@ -46,11 +45,11 @@ public class RedisTest {
 
         Mono.just("value1")
                 .flatMap(v->{
-                    reactiveRedisTemplate.expire("user1", Duration.ofMinutes(1)).subscribe();
-                    return reactiveRedisTemplate.opsForHash().put("user1","sessionKey", v);
+                    reactiveStringRedisTemplate.expire("user1", Duration.ofMinutes(1)).subscribe();
+                    return reactiveStringRedisTemplate.opsForHash().put("user1","sessionKey", v);
                 })
-                .thenMany(reactiveRedisTemplate.keys("*")
-                        .flatMap(key-> reactiveRedisTemplate.opsForHash().get(key,"sessionKey")))
+                .thenMany(reactiveStringRedisTemplate.keys("*")
+                        .flatMap(key-> reactiveStringRedisTemplate.opsForHash().get(key,"sessionKey")))
                 .subscribe(v-> Assert.assertEquals(v,"value1"));
 
 
