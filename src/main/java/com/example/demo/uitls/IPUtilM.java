@@ -1,6 +1,6 @@
 package com.example.demo.uitls;
 
-import com.example.demo.vo.Address;
+/*import com.example.demo.vo.Address;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.lionsoul.ip2region.DataBlock;
@@ -11,11 +11,11 @@ import org.lionsoul.ip2region.Util;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
-import java.lang.reflect.Method;
+import java.lang.reflect.Method;*/
 
-@Slf4j
+/*@Slf4j*/
 public class IPUtilM {
-	public static Address getCityInfo(String ip, UserAgentGetter agentGetter, String dbPath) {
+	/*public static Address getCityInfo(String ip, UserAgentGetter agentGetter, String dbPath) {
 		//String dbPath = IPUtil.class.getResource("/ip2region.db").getPath();
 		log.info("dbPath:"+dbPath);
 		File file = new File(dbPath);
@@ -109,4 +109,4 @@ public class IPUtilM {
 		
 		
 	}
-}
+*/}

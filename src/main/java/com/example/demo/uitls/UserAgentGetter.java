@@ -1,10 +1,12 @@
 package com.example.demo.uitls;
 
+/*
 import eu.bitwalker.useragentutils.UserAgent;
 
 import javax.servlet.http.HttpServletRequest;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+*/
 
 /**
  * 获取客户端设备信息
@@ -13,6 +15,7 @@ import java.net.UnknownHostException;
  * @date 2017-7-24 下午3:47:39
  */
 public class UserAgentGetter {
+/*
 	private UserAgent userAgent;
 	private String userAgentString;
 	private HttpServletRequest request;
@@ -23,9 +26,11 @@ public class UserAgentGetter {
 		userAgent = UserAgent.parseUserAgentString(userAgentString);
 	}
 
-	/**
+	*/
+/**
 	 * 获取浏览器类型
-	 */
+	 *//*
+
 	public String getBrowser() {
 		if (null == userAgent) {
 			return "";
@@ -33,9 +38,11 @@ public class UserAgentGetter {
 		return userAgent.getBrowser().getName();
 	}
 
-	/**
+	*/
+/**
 	 * 获取操作系统
-	 */
+	 *//*
+
 	public String getOS() {
 		if (null == userAgent) {
 			return "未知设备";
@@ -43,9 +50,11 @@ public class UserAgentGetter {
 		return userAgent.getOperatingSystem().getName();
 	}
 
-	/**
+	*/
+/**
 	 * 获取设备型号
-	 */
+	 *//*
+
 	public String getDevice() {
 		if (null == userAgentString) {
 			return "未知设备";
@@ -66,9 +75,11 @@ public class UserAgentGetter {
 		}
 	}
 
-	/**
+	*/
+/**
 	 * 获取ip地址
-	 */
+	 *//*
+
 	public String getIpAddr() {
 		String ip = null;
 		try {
@@ -102,4 +113,5 @@ public class UserAgentGetter {
 	private boolean isBlankIp(String str) {
 		return str == null || str.trim().isEmpty() || "unknown".equalsIgnoreCase(str);
 	}
+*/
 }
